@@ -1,0 +1,68 @@
+plugins {
+    id 'java'
+    id 'org.springframework.boot' version '3.2.2'
+    id 'io.spring.dependency-management' version '1.1.4'
+}
+
+group = 'org.example'
+version = '1.0-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+
+    // Залишаємо залежність для Springdoc OpenAPI (Swagger UI)
+    implementation 'org.springdoc:springdoc-openapi-starter-webmvc-ui:2.3.0'
+
+    // Залежності для Spring Boot
+    implementation 'org.springframework.boot:spring-boot-starter-web' // Для веб-застосунків
+    implementation 'org.springframework.boot:spring-boot-starter-data-jpa' // Якщо використовуєте JPA
+    implementation 'jakarta.persistence:jakarta.persistence-api:3.1.0'
+
+    // Залежності для безпеки та OAuth2
+    implementation 'org.springframework.boot:spring-boot-starter-security'
+    implementation 'org.springframework.boot:spring-boot-starter-oauth2-client'
+    implementation 'org.springframework.boot:spring-boot-starter-oauth2-authorization-server'
+
+    // Залежності для PostgreSQL
+    runtimeOnly 'org.postgresql:postgresql'
+
+    // Залежності для Lombok
+    compileOnly 'org.projectlombok:lombok'
+    annotationProcessor 'org.projectlombok:lombok'
+
+    // Залежності для тестування
+    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.9.0'
+    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.9.0'
+
+    // Для Docker Compose
+    runtimeOnly 'org.springframework.boot:spring-boot-docker-compose'
+
+    // Для розробки
+    developmentOnly 'org.springframework.boot:spring-boot-devtools'
+
+    // Для Spring тестування
+    testImplementation 'org.springframework.security:spring-security-test'
+    testImplementation 'org.springframework.boot:spring-boot-starter-test'
+    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.9.0'
+    testImplementation 'org.junit.jupiter:junit-jupiter-engine:5.9.0' // Використовуємо вже цю залежність для тестів
+    implementation 'org.springframework.boot:spring-boot-starter-security'
+
+    // Додаємо залежність для spring-security-core для InMemoryUserDetailsManager
+    implementation 'org.springframework.security:spring-security-core:6.0.0'
+
+    // Для Hamcrest (для перевірок)
+    testImplementation 'org.hamcrest:hamcrest'
+
+    // Для JUnit 5 (якщо ще не підключено)
+    testImplementation 'org.junit.jupiter:junit-jupiter-api'
+    testImplementation 'org.junit.jupiter:junit-jupiter-engine'
+
+
+}
+
+test {
+    useJUnitPlatform()
+}
